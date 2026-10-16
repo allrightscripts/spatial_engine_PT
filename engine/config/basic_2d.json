@@ -1,0 +1,64 @@
+{
+  "dimension": 2,
+  "seed": 2718,
+  "grid": {
+    "shape": [
+      24,
+      24
+    ],
+    "lengths": [
+      1,
+      1
+    ]
+  },
+  "dt": 0.005,
+  "t_end": 0.2,
+  "save_dt": 0.05,
+  "boundary": {
+    "type": "neumann",
+    "value": 0
+  },
+  "initial_fields": [
+    {
+      "id": "T_root",
+      "family": "T",
+      "initial": {
+        "value": 0.4
+      },
+      "parameters": {
+        "diffusion": 0.0001,
+        "growth": 0.1,
+        "capacity": 1.0,
+        "competition": 0.2
+      }
+    }
+  ],
+  "events": [],
+  "split": {
+    "threshold": 0.2,
+    "k_split_check": 5,
+    "tau_split": 0.15,
+    "min_cells": 3,
+    "mutation_sigma": 0,
+    "check_dt": 0.05,
+    "enabled": false
+  },
+  "nucleation": {
+    "rate": 0
+  },
+  "model": "cultural_v01",
+  "run_id": "BASIC_2D",
+  "solver": {
+    "backend": "spectral_galerkin",
+    "basis": "auto",
+    "modes": [
+      6,
+      6
+    ],
+    "dealiasing": "none",
+    "integrator": "Radau",
+    "rtol": 1e-07,
+    "atol": 1e-09,
+    "max_step": 0.02
+  }
+}

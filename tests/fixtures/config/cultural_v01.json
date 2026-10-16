@@ -1,0 +1,77 @@
+{
+  "dimension": 1,
+  "seed": 2718,
+  "grid": {
+    "shape": [
+      96
+    ],
+    "lengths": [
+      1.0
+    ]
+  },
+  "dt": 0.005,
+  "t_end": 1.0,
+  "save_dt": 0.05,
+  "boundary": {
+    "type": "neumann",
+    "value": 0
+  },
+  "initial_fields": [
+    {
+      "id": "T_root",
+      "family": "T",
+      "initial": {
+        "value": 1.0
+      },
+      "parameters": {
+        "diffusion": 0.0001,
+        "growth": 0.1,
+        "capacity": 1.0,
+        "competition": 0.2
+      }
+    }
+  ],
+  "events": [
+    {
+      "time": 0.23,
+      "type": "catastrophe",
+      "shape": "interval",
+      "center": [
+        0.5
+      ],
+      "width": 0.24,
+      "strength": 1.0,
+      "targets": [
+        "T_root"
+      ],
+      "duration": 0,
+      "effect_type": "impulse",
+      "close_segment": true
+    }
+  ],
+  "split": {
+    "threshold": 0.2,
+    "k_split_check": 5,
+    "tau_split": 0.15,
+    "min_cells": 3,
+    "mutation_sigma": 0,
+    "check_dt": 0.05
+  },
+  "nucleation": {
+    "rate": 0
+  },
+  "model": "cultural_v01",
+  "run_id": "CONTROLLED_CATASTROPHE",
+  "solver": {
+    "backend": "spectral_galerkin",
+    "basis": "auto",
+    "modes": [
+      24
+    ],
+    "dealiasing": "none",
+    "integrator": "Radau",
+    "rtol": 1e-07,
+    "atol": 1e-09,
+    "max_step": 0.02
+  }
+}

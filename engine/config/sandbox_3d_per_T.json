@@ -1,0 +1,176 @@
+{
+  "dimension": 3,
+  "seed": 2718,
+  "grid": {
+    "shape": [
+      32,
+      32,
+      32
+    ],
+    "lengths": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "dt": 0.005,
+  "t_end": 50.0,
+  "save_dt": 0.1,
+  "boundary": {
+    "type": "neumann",
+    "value": 0
+  },
+  "initial_fields": [
+    {
+      "id": "T_root",
+      "family": "T",
+      "model_type": "tradition_v1",
+      "initial": {
+        "value": 1.0,
+        "geometry": {
+          "type": "sphere",
+          "center": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "radius": 0.2
+        }
+      },
+      "parameters": {
+        "diffusion": 5e-05,
+        "growth": 0.02,
+        "capacity": 1.0,
+        "competition": 0.002,
+        "decay": 0.0
+      }
+    }
+  ],
+  "events": [
+    {
+      "time": 12.0,
+      "type": "catastrophe",
+      "shape": "box",
+      "center": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "width": [
+        0.16,
+        1.0,
+        1.0
+      ],
+      "strength": 1.0,
+      "duration": 0.0,
+      "effect_type": "impulse",
+      "close_segment": true,
+      "target_selector": {
+        "mode": "family",
+        "families": [
+          "T",
+          "P"
+        ]
+      }
+    }
+  ],
+  "split": {
+    "enabled": true,
+    "families": [
+      "T"
+    ],
+    "threshold": 0.2,
+    "k_split_check": 5,
+    "tau_split": 5.0,
+    "min_cells": 1,
+    "mutation_sigma": 0.0,
+    "check_dt": 0.2
+  },
+  "nucleation": {
+    "rate": 0
+  },
+  "model": "cultural_v01",
+  "run_id": "SANDBOX_3D_PER_T_09",
+  "solver": {
+    "backend": "spectral_galerkin",
+    "basis": "auto",
+    "modes": [
+      8,
+      8,
+      8
+    ],
+    "dealiasing": "none",
+    "integrator": "DOP853",
+    "rtol": 1e-07,
+    "atol": 1e-09,
+    "max_step": 0.02
+  },
+  "family_defaults": {
+    "P": {
+      "growth": 0.02,
+      "capacity": 20.0,
+      "competition": 0.001,
+      "decay": 0.0,
+      "diffusion": 0.0005
+    }
+  },
+  "stochastic_events": {
+    "p_birth": {
+      "enabled": true,
+      "max_births": 8,
+      "rate_parameters": {
+        "lambda0": 7.0,
+        "alpha": 0.0
+      },
+      "birth_amplitude": 10.0,
+      "model_type": "progressive_v1",
+      "parameter_policy": "inherit_mutate",
+      "fallback": "random",
+      "parameter_ranges": {
+        "growth": [
+          0.01,
+          0.04
+        ],
+        "capacity": [
+          15.0,
+          25.0
+        ],
+        "competition": [
+          0.0005,
+          0.002
+        ],
+        "decay": [
+          0.0,
+          0.01
+        ]
+      },
+      "mutation_sigma": 0.01,
+      "bounds_policy": "clip",
+      "mobility_policy": "inherit_mutate",
+      "diffusion_range": [
+        0.0002,
+        0.0008
+      ],
+      "mobility_mutation_sigma": 0.0002,
+      "cross_couplings": false,
+      "onsager": {
+        "validate": true,
+        "invalid_policy": "fail",
+        "tolerance": 1e-10
+      },
+      "birth_profile": "inside_T",
+      "birth_profile_parameters": {
+        "amplitude": 1.0,
+        "power": 3.0,
+        "epsilon": 1e-12,
+        "fallback": "fail"
+      },
+      "source_mode": "per_T",
+      "source_rate_function": "default_p_birth_rate_for_source",
+      "inheritance_parent_policy": "weighted_by_mass"
+    }
+  },
+  "lineage": {
+    "enabled": true
+  }
+}

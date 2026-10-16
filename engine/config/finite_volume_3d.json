@@ -1,0 +1,66 @@
+{
+  "dimension": 3,
+  "seed": 2718,
+  "grid": {
+    "shape": [
+      16,
+      18,
+      20
+    ],
+    "lengths": [
+      1.0,
+      1.2,
+      1.4
+    ]
+  },
+  "dt": 0.005,
+  "t_end": 0.2,
+  "save_dt": 0.05,
+  "boundary": {
+    "type": "neumann",
+    "value": 0
+  },
+  "initial_fields": [
+    {
+      "id": "T_root",
+      "family": "T",
+      "initial": {
+        "value": 0.4,
+        "geometry": {
+          "type": "gaussian",
+          "center": [
+            0.5,
+            0.6,
+            0.7
+          ],
+          "radii": [
+            0.2,
+            0.24,
+            0.28
+          ]
+        }
+      },
+      "parameters": {
+        "diffusion": 0.0001,
+        "growth": 0.1,
+        "capacity": 1.0,
+        "competition": 0.2
+      }
+    }
+  ],
+  "events": [],
+  "split": {
+    "threshold": 0.2,
+    "k_split_check": 5,
+    "tau_split": 1000000000.0,
+    "min_cells": 3,
+    "mutation_sigma": 0,
+    "check_dt": 0.05,
+    "enabled": false
+  },
+  "nucleation": {
+    "rate": 0
+  },
+  "model": "cultural_v01",
+  "run_id": "FINITE_VOLUME_3D_V7_1"
+}
