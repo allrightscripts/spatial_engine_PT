@@ -179,3 +179,6 @@ are not reinterpreted as current hosts. Existing archive schema remains 1.0.
 
 Distributed under the [MIT License](LICENSE). Third-party Python dependencies
 are subject to their own licenses.
+
+## DOI
+10.5281/zenodo.23476661 (https://doi.org/10.5281/zenodo.23476661)
