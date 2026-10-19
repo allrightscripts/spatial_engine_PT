@@ -41,8 +41,8 @@ numerical details may depend on the installed Python and scientific-library
 versions. See [numerical validation](docs/VALIDATION.md) and
 [release checks](docs/RELEASE_CHECKS.md).
 
-The manuscript-associated snapshot is intended to be preserved under the Git
-tag `v1.0-paper`. Add the arXiv link here once the preprint is public.
+The manuscript-associated software snapshot is preserved under the Git tag v1.0-paper. 
+The preprint is publicly available at https://doi.org/10.5281/zenodo.23476661.
 
 ## Install
 
@@ -165,10 +165,7 @@ python -m unittest discover -s tests -q
 
 Runtime dependencies: NumPy, SciPy, Matplotlib and Pillow. SymPy is needed only
 for legacy regression fixtures, installed by the `test` extra. The author-reported local release test run completed **124/124 automated tests**
-with `OK` (October 2026). The GitHub CI workflow is configured for Python
-3.10 and 3.12 on Linux and Windows; its status must be checked after the first
-push. It builds a wheel and smoke-tests the installed wheel from outside the
-checkout. Test fixtures are excluded from wheels.
+with `OK` (October 2026). 
 
 This is a research implementation, not a guarantee of accuracy for arbitrary
 parameters. Validate grid/mode convergence for each experiment. Finite spectral
